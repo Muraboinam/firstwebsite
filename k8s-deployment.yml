@@ -1,0 +1,35 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: firstwebsite
+  labels:
+    app: firstwebsite
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: firstwebsite
+  template:
+    metadata:
+      labels:
+        app: firstwebsite
+    spec:
+      containers:
+        - name: firstwebsite
+          image: firstwebsite:latest
+          ports:
+            - containerPort: 8095
+
+---
+apiversion: v1
+kind: Service
+metadata:
+  name: firstwebsite
+spec:
+     type: LoadBalancer
+     selector:
+      app: firstwebsite
+     ports:
+       - port: 8096
+         targetPort: 8095
+          
