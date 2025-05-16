@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: firstwebsite
-          image: firstwebsite:latest
+          image: maheshmu/firstwebsite:latest
           ports:
             - containerPort: 8095
 
